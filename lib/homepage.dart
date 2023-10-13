@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:simple_animation_progress_bar/simple_animation_progress_bar.dart';
 
 class HomePage extends StatefulWidget {
@@ -40,7 +41,7 @@ class _HomePageState extends State<HomePage> {
           ),
     );
   }
-
+  // The list of bills
   Widget build_day() {
     return Column(
       children: [
@@ -232,16 +233,22 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  String getCurrentMonth() {
+    final now = DateTime.now();
+    final formatter = DateFormat.MMMM(); // "MMMM" represents the full month name.
+    return formatter.format(now);
+  }
+
+  // The Total Amount
   Widget build_amount() {
     return Column(
-      children: const [
+      children: [
         SizedBox(
           height: 20,
         ),
         Align(
           alignment: Alignment.center,
-          child: Text(
-            'This month expense',
+          child: Text("${getCurrentMonth().toString()}'s expenses",
             style: TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.normal,
@@ -262,7 +269,7 @@ class _HomePageState extends State<HomePage> {
       ],
     );
   }
-
+  // Teh Graph part
   Widget build_analysis() {
     return Align(
       child: Padding(

@@ -11,6 +11,7 @@ Hello Users,
     flutter pub add animated_toggle_switch
     flutter pub add flutter_flip_card
     flutter pub add get
+    dart pub add intl
 
 ## Steps for FireBase connectivity :
     Node.js Packages : npm install -g firebase-tools
