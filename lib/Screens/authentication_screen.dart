@@ -1,10 +1,8 @@
-import 'package:expensexpert/Screens/LoginPage.dart';
-import 'package:expensexpert/category.dart';
 import 'package:expensexpert/homepage.dart';
-import 'package:expensexpert/main_page.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
 class AuthenticationScreen extends StatelessWidget {
   const AuthenticationScreen({super.key});
@@ -15,10 +13,44 @@ class AuthenticationScreen extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if(!snapshot.hasData){
-            return const SignInScreen();
+            return customizedSignInScreen();
           }
           return HomePage();
         }
+    );
+  }
+
+  Widget customizedSignInScreen(){
+    return SignInScreen(
+      headerBuilder: (context, constraints, shrinkOffset) {
+        return Padding(
+          padding: EdgeInsets.all(16),
+          child: Image.asset('assets/images/rr.png'),
+        );
+      },
+      subtitleBuilder: (context, action) {
+        return Padding(
+            padding: EdgeInsets.only(bottom: 16),
+          child: Text(
+              action == AuthAction.signIn ?
+                  'ExpenseXpert 📉📈' :
+                  'Welcome to ExpenseXpert',
+                  style: TextStyle(
+                      fontSize: 30,
+                      foreground: Paint()
+                        ..style = PaintingStyle.stroke
+                      ..strokeWidth = 2
+                      ..color = Colors.purple,
+                  ),
+          ),
+        );
+      },
+      footerBuilder: (context, _) {
+        return Padding(
+          padding: EdgeInsets.symmetric(vertical: 32),
+          child: Text('All rights reserverd\n©️ ExpenseXpert ™'),
+        );
+      },
     );
   }
 }

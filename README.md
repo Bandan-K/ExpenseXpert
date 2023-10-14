@@ -12,6 +12,8 @@ Hello Users,
     flutter pub add flutter_flip_card
     flutter pub add get
     dart pub add intl
+    flutter pub add google_sign_in
+    flutter pub add firebase_ui_oauth_google
 
 ## Steps for FireBase connectivity :
     Node.js Packages : npm install -g firebase-tools
