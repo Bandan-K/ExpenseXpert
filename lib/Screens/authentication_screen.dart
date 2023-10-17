@@ -1,7 +1,8 @@
-import 'package:expensexpert/homepage.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import '../login.dart';
 
 class AuthenticationScreen extends StatelessWidget {
   const AuthenticationScreen({super.key});
@@ -14,7 +15,7 @@ class AuthenticationScreen extends StatelessWidget {
           if(!snapshot.hasData){
             return customizedSignInScreen();
           }
-          return HomePage();
+          return LoginScreen();
         }
     );
   }
@@ -47,7 +48,7 @@ class AuthenticationScreen extends StatelessWidget {
       footerBuilder: (context, _) {
         return Padding(
           padding: EdgeInsets.symmetric(vertical: 32),
-          child: Text('All rights reserverd\n©️ ExpenseXpert ™'),
+          child: Text('All rights reserverd\nExpenseXpert™ ©️'),
         );
       },
     );

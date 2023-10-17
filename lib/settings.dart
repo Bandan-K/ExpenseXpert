@@ -1,5 +1,5 @@
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
-import 'package:expensexpert/login.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -199,11 +199,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
                     )),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => LoginScreen()), // Navigate to SecondPage
-                      );
+                    onPressed: () async {
+                      await FirebaseAuth.instance.signOut();
                     }, child:
                     Icon(
                       Icons.logout,
