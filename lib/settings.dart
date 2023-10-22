@@ -213,7 +213,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       await FirebaseAuth.instance.signOut();
                       const AuthenticationScreen();
                     }, child:
-                    const Row(
+                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Text(
