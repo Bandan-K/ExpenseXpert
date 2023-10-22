@@ -175,26 +175,27 @@ class _SettingsScreenState extends State<SettingsScreen> {
             const SizedBox(
               height: 50,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
+            ElevatedButton(style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.black),
+                foregroundColor: MaterialStateProperty.all(Colors.white),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
+                )),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const CategoryPage()), // Navigate to SecondPage
+                  );
+                }, child: const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
                   "Add Category",
-                  style: TextStyle(color: isSelected? lightColor : darkColor, fontSize: 20),
+                  style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
-                ElevatedButton(style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(isSelected? darkColor : lightColor),
-                    foregroundColor: MaterialStateProperty.all(isSelected? lightColor : darkColor),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
-                    )),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => CategoryPage()), // Navigate to SecondPage
-                      );
-                    }, child: Icon(Icons.arrow_forward_ios))
-              ],
+                    Icon(Icons.arrow_forward_ios),
+                ],
+              ),
             ),
             SizedBox(
               height: 50,
