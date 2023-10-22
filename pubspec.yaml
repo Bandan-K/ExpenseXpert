@@ -49,6 +49,7 @@ dependencies:
   intl: ^0.18.1
   google_sign_in: ^6.1.5
   firebase_ui_oauth_google: ^1.2.12
+  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:
@@ -101,3 +102,7 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_icons:
+  image_path: "assets/images/applogo.jpg"
+  android: true
+  ios: true

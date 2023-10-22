@@ -1,4 +1,5 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import 'package:expensexpert/Screens/add_transactions.dart';
 import 'package:flutter/material.dart';
 import '../analytics.dart';
 import '../homepage.dart';
@@ -25,11 +26,23 @@ class _BottomNavBarState extends State<BottomNavBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: pages[currIndex],
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => AddTransaction()), // Navigate to SecondPage
+          );
+        },
+        child: Icon(Icons.add),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(
         icons: iconList,
         activeIndex: currIndex,
-        gapWidth: 4.0,
-        backgroundColor: Colors.grey.shade700,
+        gapLocation: GapLocation.center,
+        notchSmoothness: NotchSmoothness.verySmoothEdge,
+        leftCornerRadius: 32,
+        rightCornerRadius: 32,
         onTap: (index) => setState(() => currIndex = index),
         //other params
       ),

@@ -65,6 +65,9 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Analytics"),
+      ),
       backgroundColor: Colors.black,
        body:
        Column(
