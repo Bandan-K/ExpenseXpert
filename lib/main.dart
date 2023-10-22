@@ -37,6 +37,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const AuthenticationScreen(),
+      // Testing purpose
       // home: AddUser("Bandan", "RKU", 20),
       // home: GetUserName("2Gun4KklOwE3MMJWF3DY"),
     );
