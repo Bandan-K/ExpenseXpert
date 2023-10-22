@@ -18,7 +18,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   List pages = [HomePage(),AnalyticsPage(),ProfileScreen(),SettingsScreen()];
   final iconList = <IconData>[
     Icons.home,
-    Icons.analytics_outlined,
+    Icons.analytics,
     Icons.person_2_rounded,
     Icons.settings,
   ];

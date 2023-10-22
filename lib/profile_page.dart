@@ -1,115 +1,191 @@
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
-
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  var gender = "Male";
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+  String? selectedGender;
+  DateTime? selectedDate;
 
-  String value = "Male";
+  String? savedName;
+  String? savedEmail;
+  String? savedPhoneNumber;
+  String? savedGender;
+  DateTime? savedDateOfBirth;
+
+  bool isEditing = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('User Profile'),
+      ),
       backgroundColor: Colors.black,
       body: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 40),
-            const Text(
-              "Profile",
-              style: TextStyle(color: Colors.white, fontSize: 25),
-              textAlign: TextAlign.left,
-            ),
-            const SizedBox(height: 40),
-            Align(
-              alignment: Alignment.center,
-              child: Container(
-                height: 120,
-                width: 120,
-                child: Image.asset(
-                  "assets/images/icons8-male-user-50 (black).png",
-                  fit: BoxFit.cover,
+        padding: const EdgeInsets.all(16.0),
+        child: Form(
+          child: Column(
+            children: [
+              TextFormField(
+                controller: nameController,
+                style: TextStyle(color: Colors.white),
+                decoration: InputDecoration(
+                  labelText: 'Name',
+                  labelStyle: TextStyle(color: Colors.white),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.purple),
+                  ),
+                  enabled: isEditing,
                 ),
               ),
-            ),
-            SizedBox(height: 20),
-            Text(
-              "Name",
-              style: TextStyle(color: Colors.white, fontSize: 20),
-              textAlign: TextAlign.left,
-            ),
-            TextFormField(
-              decoration: InputDecoration(
-                labelText: "",
-                labelStyle: TextStyle(color: Colors.white),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
-                ),
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
+              SizedBox(height: 16),
+              TextFormField(
+                controller: emailController,
+                style: TextStyle(color: Colors.white),
+                decoration: InputDecoration(
+                  labelText: 'Email',
+                  labelStyle: TextStyle(color: Colors.white),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.purple),
+                  ),
+                  enabled: isEditing,
                 ),
               ),
-              style: TextStyle(color: Colors.white),
-            ),
-            SizedBox(height: 20),
-            Text(
-              "Name",
-              style: TextStyle(color: Colors.white, fontSize: 20),
-              textAlign: TextAlign.left,
-            ),
-            TextFormField(
-              decoration: InputDecoration(
-                labelText: "",
-                labelStyle: TextStyle(color: Colors.white),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
-                ),
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
+              SizedBox(height: 16),
+              TextFormField(
+                controller: phoneController,
+                style: TextStyle(color: Colors.white),
+                decoration: InputDecoration(
+                  labelText: 'Phone Number',
+                  labelStyle: TextStyle(color: Colors.white),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.purple),
+                  ),
+                  enabled: isEditing,
                 ),
               ),
-              style: TextStyle(color: Colors.white),
-            ),
-            RadioListTile(
-              activeColor: Colors.white,
-              title: Text("Male",style: TextStyle(color: Colors.white,fontSize: 18),),
-              value: 'Male',
-              groupValue: gender,
-              onChanged: (v) {
-                gender = v!;
-                value = v;
-                setState(() {});
-              },
-            ),
-            RadioListTile(
-              activeColor: Colors.white,
-              title: Text("Female",style: TextStyle(color: Colors.white,fontSize: 18),),
-              value: 'Female',
-              groupValue: gender,
-              onChanged: (v) {
-                gender = v!;
-                value = v;
-                setState(() {});
-              },
-            ),
-            RadioListTile(
-              activeColor: Colors.white,
-              title: Text("Other",style: TextStyle(color: Colors.white,fontSize: 18),),
-              value: 'Other',
-              groupValue: gender,
-              onChanged: (v) {
-                gender = v!;
-                value = v;
-                setState(() {});
-              },
-            )
-          ],
+              SizedBox(height: 16),
+              Text(
+                'Gender',
+                style: TextStyle(color: Colors.white, fontSize: 18),
+              ),
+              Row(
+                children: [
+                  Radio(
+                    value: 'Male',
+                    groupValue: selectedGender,
+                    onChanged: (value) {
+                      setState(() {
+                        selectedGender = value;
+                      });
+                    },
+                  ),
+                  Text('Male', style: TextStyle(color: Colors.white)),
+                  Radio(
+                    value: 'Female',
+                    groupValue: selectedGender,
+                    onChanged: (value) {
+                      setState(() {
+                        selectedGender = value;
+                      });
+                    },
+                  ),
+                  Text('Female', style: TextStyle(color: Colors.white)),
+                ],
+              ),
+              SizedBox(height: 16),
+              Row(
+                children: [
+                  Text(
+                    'Date of Birth',
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                  SizedBox(width: 16),
+                  ElevatedButton(
+                    onPressed: () async {
+                      final selectedDate = await showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(1900),
+                        lastDate: DateTime.now(),
+                      );
+
+                      if (selectedDate != null) {
+                        setState(() {
+                          this.selectedDate = selectedDate;
+                        });
+                      }
+                    },
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.purple),
+                    ),
+                    child: Text(
+                      'Select Date',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ],
+              ),
+              if (selectedDate != null)
+                Text(
+                  'Date of Birth: ${selectedDate?.toLocal().toString().split(' ')[0]}',
+                  style: TextStyle(color: Colors.white),
+                ),
+              SizedBox(height: 16),
+              if (isEditing)
+                ElevatedButton(
+                  onPressed: () {
+                    if (selectedGender != null && selectedDate != null) {
+                      savedName = nameController.text;
+                      savedEmail = emailController.text;
+                      savedPhoneNumber = phoneController.text;
+                      savedGender = selectedGender;
+                      savedDateOfBirth = selectedDate;
+                    }
+                    setState(() {
+                      isEditing = false;
+                    });
+                  },
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.purple),
+                  ),
+                  child: Text(
+                    'Save',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              if (!isEditing)
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      isEditing = true;
+                    });
+                  },
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.purple),
+                  ),
+                  child: Text(
+                    'Edit',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+            ],
+          ),
         ),
       ),
     );

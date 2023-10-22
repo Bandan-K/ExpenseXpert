@@ -22,23 +22,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.black,
+        title: const Text("Settings", style: TextStyle(color: Colors.white),),
+      ),
       backgroundColor: Colors.black,
       body: Padding(
         padding: const EdgeInsets.all(30.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const Row(
-              children: [
-                Text(
-                  "Settings",
-                  style: TextStyle(color: Colors.white, fontSize: 25),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 40,
-            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
