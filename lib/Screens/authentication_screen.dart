@@ -46,9 +46,9 @@ class AuthenticationScreen extends StatelessWidget {
         );
       },
       footerBuilder: (context, _) {
-        return Padding(
+        return const Padding(
           padding: EdgeInsets.symmetric(vertical: 32),
-          child: Text('All rights reserverd\nExpenseXpert™ ©️'),
+          child: Text('All rights reserved\nExpenseXpert™ ©️'),
         );
       },
     );
