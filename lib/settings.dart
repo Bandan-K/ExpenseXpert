@@ -151,7 +151,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             const SizedBox(
               height: 50,
             ),
-            Row(
+            Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
