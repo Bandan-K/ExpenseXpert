@@ -1,4 +1,4 @@
-import 'package:ExpenseXpert/UnImportantFiles/sign_up.dart';
+import 'package:expensexpert/UnImportantFiles/sign_up.dart';
 import 'package:flutter/material.dart';
 
 class ForgotPass extends StatefulWidget {
