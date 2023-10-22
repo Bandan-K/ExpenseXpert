@@ -1,7 +1,9 @@
-import 'package:expensexpert/BottomNavigationBar/bottom_nav_bar.dart';
-import 'package:expensexpert/forgot_pass.dart';
-import 'package:expensexpert/unImportantFiles/sign_up.dart';
+
+import 'package:ExpenseXpert/UnImportantFiles/sign_up.dart';
 import 'package:flutter/material.dart';
+
+import '../BottomNavigationBar/bottom_nav_bar.dart';
+import 'forgot_pass.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
