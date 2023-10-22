@@ -160,7 +160,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     }, child: Icon(Icons.arrow_forward_ios))
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             Row(
