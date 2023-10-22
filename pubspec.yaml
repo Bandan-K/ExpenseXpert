@@ -51,6 +51,7 @@ dependencies:
   firebase_ui_oauth_google: ^1.2.12
   cloud_firestore: ^4.11.0
   fluttertoast: ^8.2.2
+  shared_preferences: ^2.2.2
 
 dev_dependencies:
   flutter_test:

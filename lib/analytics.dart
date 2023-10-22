@@ -60,13 +60,16 @@ class AnalyticsPage extends StatefulWidget {
 
 class _AnalyticsPageState extends State<AnalyticsPage> {
 
+  bool isSelected = true;
+  var darkColor = Colors.black;
+  var lightColor = Colors.white;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.black,
-        title: const Text("Analytics", style: TextStyle(color: Colors.white),),
+        backgroundColor: isSelected? darkColor : lightColor,
+        title:Text("Analytics", style: TextStyle(color:isSelected? lightColor : darkColor),),
       ),
       backgroundColor: Colors.black,
        body:

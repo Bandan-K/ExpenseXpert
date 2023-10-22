@@ -1,3 +1,5 @@
+import 'package:expensexpert/Operations/get_users.dart';
+import 'package:expensexpert/Operations/update_users.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:firebase_ui_oauth_google/firebase_ui_oauth_google.dart';
@@ -36,7 +38,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.purple),
         useMaterial3: true,
       ),
-      home: const AuthenticationScreen(),
+      home: AuthenticationScreen(),
       // Testing purpose
       // home: AddUser("Bandan", "RKU", 20),
       // home: GetUserName("2Gun4KklOwE3MMJWF3DY"),

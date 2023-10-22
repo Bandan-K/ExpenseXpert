@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
 
 class ExportPage extends StatefulWidget {
-  const ExportPage({super.key});
+  const ExportPage({super.key, required bool isSelected}) : _isSelected = isSelected;
+  final bool _isSelected;
 
   @override
-  State<ExportPage> createState() => _ExportPageState();
+  State<ExportPage> createState() => _ExportPageState(_isSelected);
 }
 
 class _ExportPageState extends State<ExportPage> {
+  final bool _isSelected;
+
+  _ExportPageState(this._isSelected);
+
+  var darkColor = Colors.black;
+  var lightColor = Colors.white;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.black,
+          backgroundColor: _isSelected? darkColor : lightColor,
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
@@ -21,13 +28,13 @@ class _ExportPageState extends State<ExportPage> {
             },
           ),
         ),
-        backgroundColor: Colors.black,
+        backgroundColor: _isSelected? darkColor : lightColor,
         body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          const Padding(
+          Padding(
             padding: EdgeInsets.all(16),
             child: Text(
               "Export Data",
-              style: TextStyle(fontSize: 35, color: Colors.white),
+              style: TextStyle(fontSize: 35, color: _isSelected? lightColor : darkColor),
             ),
           ),
           buildPdf(),
@@ -46,10 +53,10 @@ class _ExportPageState extends State<ExportPage> {
             // First button click action
           },
           style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.black,
+            backgroundColor: _isSelected? darkColor : lightColor,
             fixedSize: const Size(187.0, 50.0),
-            side: const BorderSide(
-                color: Colors.white,
+            side: BorderSide(
+                color: _isSelected? lightColor : darkColor,
                 width: 2), // Set the width and height you desire
             shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
@@ -65,9 +72,9 @@ class _ExportPageState extends State<ExportPage> {
             // Second button click action
           },
           style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.grey,
+            backgroundColor: Colors.grey.shade400,
             fixedSize: const Size(187.0, 50.0),
-            side: const BorderSide(color: Colors.white, width: 2),
+            side: BorderSide(color: _isSelected? darkColor : lightColor, width: 2),
             shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
                 topRight: Radius.circular(20), // Adjust as needed
@@ -91,14 +98,14 @@ class _ExportPageState extends State<ExportPage> {
 
           decoration: InputDecoration(
               border: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.white54, width: 25),
+                  borderSide: BorderSide(color: _isSelected? darkColor : lightColor, width: 25),
                   borderRadius: BorderRadius.circular(400)),
-              enabledBorder: const OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.white, width: 2.5),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: _isSelected? darkColor : lightColor, width: 2.5),
               ),
               labelText: "Date",
               suffixIcon: const Icon(Icons.calendar_month),
-              labelStyle: const TextStyle(color: Colors.white, fontSize: 16)),
+              labelStyle: TextStyle(color: _isSelected? lightColor : darkColor, fontSize: 16)),
         ),
       ),
       // SizedBox(
@@ -120,7 +127,7 @@ class _ExportPageState extends State<ExportPage> {
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all<Color>(
                 Colors
-                    .purple.shade700, // Set your desired background color here
+                    .purple.shade50, // Set your desired background color here
               ),
             ),
             child: const Text(

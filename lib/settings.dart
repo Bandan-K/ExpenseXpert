@@ -3,7 +3,8 @@ import 'package:expensexpert/Screens/authentication_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'Operations/get_users.dart';
 import 'category.dart';
 import 'export_page.dart';
 import 'transactions_page.dart';
@@ -16,226 +17,244 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   bool positive = false;
-  bool isSelected = true;
-  var darkColor = Colors.black;
-  var lightColor = Colors.white;
+    bool isSelected = true;
+    var darkColor = Colors.black;
+    var lightColor = Colors.white;
   String? email = FirebaseAuth.instance.currentUser?.email;
 
   // String? displayText = (email != null && email.isNotEmpty) ? email : "Guest";
+
+  // Retrieve the theme setting from shared preferences during initialization
+  @override
+  void initState() {
+    super.initState();
+    loadTheme();
+  }
+
+
+  // Function to load the theme setting from shared preferences
+  Future<void> loadTheme() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      isSelected = prefs.getBool('theme') ?? true;
+    });
+  }
+
+
+  // Function to save the theme setting to shared preferences
+  Future<void> saveTheme(bool isDark) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setBool('theme', isDark);
+  }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.black,
-        title: const Text("Settings", style: TextStyle(color: Colors.white),),
+        backgroundColor: isSelected? darkColor : lightColor,
+        title: Text("Settings", style: TextStyle(color: isSelected? lightColor : darkColor),),
       ),
       backgroundColor: isSelected? darkColor : lightColor,
-      body: Padding(
-        padding: const EdgeInsets.all(30.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Container(
-                  height: 80,
-                  width: 80,
-                  child: Image.asset(
-                    "assets/images/profileimage.png",
-                    fit: BoxFit.cover,
+      body:SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(30.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Container(
+                    height: 80,
+                    width: 80,
+                    child: Image.asset(
+                      "assets/images/profileimage.png",
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  width: 25,
-                ),
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  Text(
-                    "",
-                    style: TextStyle(color: isSelected? lightColor : darkColor, fontSize: 15),
+                  const SizedBox(
+                    width: 25,
                   ),
-                  Text(
-                    "Guest",
-                    style: TextStyle(color: isSelected? lightColor : darkColor, fontSize: 18),
-                  ),
-                ]),
-                // ElevatedButton(onPressed: () {} , child: Icon(Icons.arrow_forward_ios,color: Colors.white,))
-              ],
-            ),
-            const SizedBox(
-              height: 50,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Transactions",
-                  style: TextStyle(color: isSelected? lightColor : darkColor, fontSize: 20),
-                ),
-                ElevatedButton(style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(isSelected? darkColor : lightColor),
-                    foregroundColor: MaterialStateProperty.all(isSelected? lightColor : darkColor),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
-                    )),
-                    onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => TransactionsPage()), // Navigate to SecondPage
-                  );
-                }, child: Icon(Icons.arrow_forward_ios))
-              ],
-            ),
-            const SizedBox(
-              height: 50,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Theme",
-                  style: TextStyle(color: isSelected? lightColor : darkColor, fontSize: 20),
-                ),
-                Switch(value: isSelected,onChanged: (v) {
-                  isSelected = v;
-                  setState(() {});
-                  Fluttertoast.showToast(
-                      msg: isSelected?"Dark Theme":"Light Theme",
-                      toastLength: Toast.LENGTH_SHORT,
-                      gravity: ToastGravity.CENTER,
-                      timeInSecForIosWeb: 1,
-                      backgroundColor: Colors.deepPurple,
-                      textColor: Colors.white,
-                      fontSize: 16.0
-                  );
-                }),
-                AnimatedToggleSwitch<bool>.dual(
-                  current: positive,
-                  first: false,
-                  second: true,
-                  spacing: 45.0,
-                  style: const ToggleStyle(
-                    borderColor: Colors.transparent,
-                    backgroundColor: Colors.black,
-                    borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.deepPurple,
-                        spreadRadius: 1,
-                        blurRadius: 1,
-                        offset: Offset(0, 0.5),
-                      ),
-                    ],
-                  ),
-                  borderWidth: 5.0,
-                  height: 50,
-                  loadingIconBuilder: (context, global) =>
-                  const CupertinoActivityIndicator(color: Colors.white),
-                  onChanged: (b) {
-                    setState(() => positive = b);
-                    return Future<dynamic>.delayed(const Duration(seconds: 0));
-                  },
-                  styleBuilder: (b) => ToggleStyle(
-                      indicatorColor: b ? Colors.deepPurple.shade900 : Colors.deepPurple.shade900),
-                  textBuilder: (value) => value
-                      ? Center(
-                      child: Image.asset("assets/images/icons8-accuweather-64.png")
-                  )
-                      : Center(child: Image.asset("assets/images/icons8-moon-64.png")),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 50,
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                ElevatedButton(style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(isSelected? darkColor : lightColor),
-                    foregroundColor: MaterialStateProperty.all(isSelected? lightColor : darkColor),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
-                    )),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => ExportPage()), // Navigate to SecondPage
-                      );
-                    }, child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Export",
-                        style: TextStyle(color: Colors.white, fontSize: 20),
-                      ),
-                      Icon(Icons.arrow_forward_ios),
-                    ],
-                  ),
-            ),
-            const SizedBox(
-              height: 50,
-            ),
-            ElevatedButton(style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.black),
-                foregroundColor: MaterialStateProperty.all(Colors.white),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
-                )),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const CategoryPage()), // Navigate to SecondPage
-                  );
-                }, child: const Row(
+                  Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    Text(
+                      "",
+                      style: TextStyle(color: isSelected? lightColor : darkColor, fontSize: 15),
+                    ),
+                    GetUserName("2Gun4KklOwE3MMJWF3DY"),
+                    Text(
+                      "Guest",
+                      style: TextStyle(color: isSelected? lightColor : darkColor, fontSize: 18),
+                    ),
+                  ]),
+                  // ElevatedButton(onPressed: () {} , child: Icon(Icons.arrow_forward_ios,color: Colors.white,))
+                ],
+              ),
+              SizedBox(
+                height: 50,
+              ),
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                  "Add Category",
-                  style: TextStyle(color: Colors.white, fontSize: 20),
-                ),
-                    Icon(Icons.arrow_forward_ios),
+                    "Transactions",
+                    style: TextStyle(color: isSelected? lightColor : darkColor, fontSize: 20),
+                  ),
+                  ElevatedButton(style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(isSelected? darkColor : lightColor),
+                      foregroundColor: MaterialStateProperty.all(isSelected? lightColor : darkColor),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
+                      )),
+                      onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => TransactionsPage(isSelected : isSelected)), // Navigate to SecondPage
+                    );
+                  }, child: Icon(Icons.arrow_forward_ios))
                 ],
               ),
-            ),
-            SizedBox(
-              height: 50,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                ElevatedButton(style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(isSelected? darkColor : lightColor),
-                    foregroundColor: MaterialStateProperty.all(isSelected? lightColor : darkColor),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
-                    )),
-                    onPressed: () async {
-                      await FirebaseAuth.instance.signOut();
-                      const AuthenticationScreen();
-                    }, child:
-                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text(
-                          "Logout  ",
-                          style: TextStyle(color: isSelected? lightColor : darkColor, fontSize: 20),
-                        ),
-                        Icon(
-                          Icons.logout,
-                          color:isSelected? lightColor : darkColor,
+              const SizedBox(
+                height: 50,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Theme",
+                    style: TextStyle(color: isSelected? lightColor : darkColor, fontSize: 20),
+                  ),
+                  AnimatedToggleSwitch<bool>.dual(
+                    current: isSelected,
+                    first: false,
+                    second: true,
+                    spacing: 45.0,
+                    style: ToggleStyle(
+                      borderColor: Colors.transparent,
+                      backgroundColor: isSelected? darkColor : lightColor,
+                      borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.deepPurple,
+                          spreadRadius: 1,
+                          blurRadius: 1,
+                          offset: Offset(0, 0.5),
                         ),
                       ],
-                    ))
+                    ),
+                    borderWidth: 5.0,
+                    height: 50,
+                    loadingIconBuilder: (context, global) =>
+                    const CupertinoActivityIndicator(color: Colors.white),
+                    onChanged: (b) {
+                      saveTheme(b); // Save the theme selection to shared preferences
+                      setState(() {
+                        isSelected = b;
+                        positive = b;
+                      });
+                      return Future<dynamic>.delayed(const Duration(seconds: 0));
+                    },
+                    styleBuilder: (b) => ToggleStyle(
+                        indicatorColor: b ? Colors.deepPurple.shade900 : Colors.deepPurple.shade900),
+                    textBuilder: (value) => value
+                        ? Center(
+                        child: Image.asset("assets/images/icons8-accuweather-64.png")
+                    )
+                        : Center(child: Image.asset("assets/images/icons8-moon-64.png")),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ElevatedButton(style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(isSelected? darkColor : lightColor),
+                      foregroundColor: MaterialStateProperty.all(isSelected? lightColor : darkColor),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
+                      )),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ExportPage(isSelected : isSelected)), // Navigate to SecondPage
+                        );
+                      }, child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Export",
+                          style: TextStyle(color: isSelected? lightColor : darkColor, fontSize: 20),
+                        ),
+                        Icon(Icons.arrow_forward_ios),
+                      ],
+                    ),
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              ElevatedButton(style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(isSelected? darkColor : lightColor),
+                  foregroundColor: MaterialStateProperty.all(isSelected? lightColor : darkColor),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
+                  )),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => CategoryPage(isSelected : isSelected)), // Navigate to SecondPage
+                    );
+                  }, child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                    "Add Category",
+                    style: TextStyle(color: isSelected? lightColor : darkColor, fontSize: 20),
+                  ),
+                      Icon(Icons.arrow_forward_ios),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 50,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  ElevatedButton(style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(isSelected? darkColor : lightColor),
+                      foregroundColor: MaterialStateProperty.all(isSelected? lightColor : darkColor),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
+                      )),
+                      onPressed: () async {
+                        await FirebaseAuth.instance.signOut();
+                        const AuthenticationScreen();
+                      }, child:
+                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text(
+                            "Logout  ",
+                            style: TextStyle(color: isSelected? lightColor : darkColor, fontSize: 20),
+                          ),
+                          Icon(
+                            Icons.logout,
+                            color:isSelected? lightColor : darkColor,
+                          ),
+                        ],
+                      ))
 
-              ],
-            )
-          ],
+                ],
+              )
+            ],
+          ),
+          ]
         ),
-        ]
-      ),
+        ),
       )
     );
   }
