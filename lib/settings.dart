@@ -190,10 +190,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text(
-                  "Logout  ",
-                  style: TextStyle(color: Colors.white, fontSize: 20),
-                ),
                 ElevatedButton(style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.black),
                     foregroundColor: MaterialStateProperty.all(Colors.white),
@@ -203,9 +199,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     onPressed: () async {
                       await FirebaseAuth.instance.signOut();
                     }, child:
-                    Icon(
-                      Icons.logout,
-                      color: Colors.white,
+                    Column(
+                      children: [
+                        Text(
+                          "Logout  ",
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
+                        Icon(
+                          Icons.logout,
+                          color: Colors.white,
+                        ),
+                      ],
                     ))
 
               ],

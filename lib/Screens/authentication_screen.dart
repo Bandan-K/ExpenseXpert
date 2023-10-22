@@ -12,7 +12,7 @@ class AuthenticationScreen extends StatelessWidget {
     return StreamBuilder(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
-          if(!snapshot.hasData){
+          if (!snapshot.hasData) {
             return customizedSignInScreen();
           }
           return const LoginScreen();
@@ -20,7 +20,7 @@ class AuthenticationScreen extends StatelessWidget {
     );
   }
 
-  Widget customizedSignInScreen(){
+  Widget customizedSignInScreen() {
     return SignInScreen(
       headerBuilder: (context, constraints, shrinkOffset) {
         return Padding(
@@ -30,18 +30,18 @@ class AuthenticationScreen extends StatelessWidget {
       },
       subtitleBuilder: (context, action) {
         return Padding(
-            padding: EdgeInsets.only(bottom: 16),
+          padding: EdgeInsets.only(bottom: 16),
           child: Text(
-              action == AuthAction.signIn ?
-                  'ExpenseXpert 📉📈' :
-                  'Welcome to ExpenseXpert',
-                  style: TextStyle(
-                      fontSize: 30,
-                      foreground: Paint()
-                        ..style = PaintingStyle.stroke
-                      ..strokeWidth = 2
-                      ..color = Colors.purple,
-                  ),
+            action == AuthAction.signIn ?
+            'ExpenseXpert 📉📈' :
+            'Welcome to ExpenseXpert',
+            style: TextStyle(
+              fontSize: 30,
+              foreground: Paint()
+                ..style = PaintingStyle.stroke
+                ..strokeWidth = 2
+                ..color = Colors.purple,
+            ),
           ),
         );
       },
