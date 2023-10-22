@@ -115,7 +115,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   current: positive,
                   first: false,
                   second: true,
-
                   spacing: 45.0,
                   style: const ToggleStyle(
                     borderColor: Colors.transparent,
