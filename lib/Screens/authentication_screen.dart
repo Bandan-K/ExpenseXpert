@@ -15,7 +15,7 @@ class AuthenticationScreen extends StatelessWidget {
           if(!snapshot.hasData){
             return customizedSignInScreen();
           }
-          return LoginScreen();
+          return const LoginScreen();
         }
     );
   }
@@ -24,7 +24,7 @@ class AuthenticationScreen extends StatelessWidget {
     return SignInScreen(
       headerBuilder: (context, constraints, shrinkOffset) {
         return Padding(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: Image.asset('assets/images/rr.png'),
         );
       },

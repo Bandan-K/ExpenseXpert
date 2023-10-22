@@ -18,7 +18,7 @@ Future main() async {
   // Login with Google
   FirebaseUIAuth.configureProviders([
     EmailAuthProvider(),
-    GoogleProvider(clientId: '1:54532140724:web:9ef05c361b7e672a8071e1'),
+    GoogleProvider(clientId: '1:54532140724:android:949a2933f801cde48071e1'),
   ]);
   runApp(const MyApp());
 }
