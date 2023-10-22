@@ -12,9 +12,9 @@ Future main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   // FireBase UI-Auth
-  FirebaseUIAuth.configureProviders([
-    EmailAuthProvider(),
-  ]);
+  // FirebaseUIAuth.configureProviders([
+  //   EmailAuthProvider(),
+  // ]);
   // Login with Google
   FirebaseUIAuth.configureProviders([
     EmailAuthProvider(),

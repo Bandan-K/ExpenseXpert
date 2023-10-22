@@ -51,7 +51,6 @@ List<PieChartSectionData> generatePopulationData() {
   ];
 }
 
-
 class AnalyticsPage extends StatefulWidget {
   const AnalyticsPage({super.key});
 
@@ -59,21 +58,19 @@ class AnalyticsPage extends StatefulWidget {
   State<AnalyticsPage> createState() => _AnalyticsPageState();
 }
 
-
 class _AnalyticsPageState extends State<AnalyticsPage> {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Analytics"),
+        backgroundColor: Colors.black,
+        title: const Text("Analytics", style: TextStyle(color: Colors.white),),
       ),
       backgroundColor: Colors.black,
        body:
        Column(
-
          children: [
-
            // Pie chart
            Container(
              alignment: Alignment.topCenter,
@@ -91,7 +88,6 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
            ),
            Row(
              children: [
-
                //BILLS
                Container(
                  child: Image.asset("assets/images/icons8-bill-64.png"),
@@ -130,7 +126,6 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
 
              ],
            ),
-
 //CLOTHES
            Row(
              children: [
