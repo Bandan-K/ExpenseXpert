@@ -2,6 +2,7 @@ import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'category.dart';
 import 'export_page.dart';
 import 'transactions_page.dart';
@@ -14,7 +15,9 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   bool positive = false;
-
+  bool isSelected = true;
+  var darkColor = Colors.black;
+  var lightColor = Colors.white;
   String? email = FirebaseAuth.instance.currentUser?.email;
 
   // String? displayText = (email != null && email.isNotEmpty) ? email : "Guest";
@@ -27,7 +30,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         backgroundColor: Colors.black,
         title: const Text("Settings", style: TextStyle(color: Colors.white),),
       ),
-      backgroundColor: Colors.black,
+      backgroundColor: isSelected? darkColor : lightColor,
       body: Padding(
         padding: const EdgeInsets.all(30.0),
         child: Column(
@@ -40,21 +43,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   height: 80,
                   width: 80,
                   child: Image.asset(
-                    "assets/images/icons8-male-user-50 (black).png",
+                    "assets/images/profileimage.png",
                     fit: BoxFit.cover,
                   ),
                 ),
                 const SizedBox(
                   width: 25,
                 ),
-                const Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   Text(
                     "",
-                    style: TextStyle(color: Colors.white, fontSize: 15),
+                    style: TextStyle(color: isSelected? lightColor : darkColor, fontSize: 15),
                   ),
                   Text(
                     "Guest",
-                    style: TextStyle(color: Colors.white, fontSize: 18),
+                    style: TextStyle(color: isSelected? lightColor : darkColor, fontSize: 18),
                   ),
                 ]),
                 // ElevatedButton(onPressed: () {} , child: Icon(Icons.arrow_forward_ios,color: Colors.white,))
@@ -66,13 +69,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
+                Text(
                   "Transactions",
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+                  style: TextStyle(color: isSelected? lightColor : darkColor, fontSize: 20),
                 ),
                 ElevatedButton(style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.black),
-                    foregroundColor: MaterialStateProperty.all(Colors.white),
+                    backgroundColor: MaterialStateProperty.all(isSelected? darkColor : lightColor),
+                    foregroundColor: MaterialStateProperty.all(isSelected? lightColor : darkColor),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
                     )),
@@ -90,14 +93,28 @@ class _SettingsScreenState extends State<SettingsScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
+                Text(
                   "Theme",
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+                  style: TextStyle(color: isSelected? lightColor : darkColor, fontSize: 20),
                 ),
+                Switch(value: isSelected,onChanged: (v) {
+                  isSelected = v;
+                  setState(() {});
+                  Fluttertoast.showToast(
+                      msg: isSelected?"Dark Theme":"Light Theme",
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.CENTER,
+                      timeInSecForIosWeb: 1,
+                      backgroundColor: Colors.deepPurple,
+                      textColor: Colors.white,
+                      fontSize: 16.0
+                  );
+                }),
                 AnimatedToggleSwitch<bool>.dual(
                   current: positive,
                   first: false,
                   second: true,
+
                   spacing: 45.0,
                   style: const ToggleStyle(
                     borderColor: Colors.transparent,
@@ -136,13 +153,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
+                Text(
                   "Export",
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+                  style: TextStyle(color: isSelected? lightColor : darkColor, fontSize: 20),
                 ),
                 ElevatedButton(style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.black),
-                    foregroundColor: MaterialStateProperty.all(Colors.white),
+                    backgroundColor: MaterialStateProperty.all(isSelected? darkColor : lightColor),
+                    foregroundColor: MaterialStateProperty.all(isSelected? lightColor : darkColor),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
                     )),
@@ -162,11 +179,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
               children: [
                 Text(
                   "Add Category",
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+                  style: TextStyle(color: isSelected? lightColor : darkColor, fontSize: 20),
                 ),
                 ElevatedButton(style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.black),
-                    foregroundColor: MaterialStateProperty.all(Colors.white),
+                    backgroundColor: MaterialStateProperty.all(isSelected? darkColor : lightColor),
+                    foregroundColor: MaterialStateProperty.all(isSelected? lightColor : darkColor),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
                     )),
@@ -185,8 +202,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 ElevatedButton(style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.black),
-                    foregroundColor: MaterialStateProperty.all(Colors.white),
+                    backgroundColor: MaterialStateProperty.all(isSelected? darkColor : lightColor),
+                    foregroundColor: MaterialStateProperty.all(isSelected? lightColor : darkColor),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
                     )),
@@ -197,11 +214,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       children: [
                         Text(
                           "Logout  ",
-                          style: TextStyle(color: Colors.white, fontSize: 20),
+                          style: TextStyle(color: isSelected? lightColor : darkColor, fontSize: 20),
                         ),
                         Icon(
                           Icons.logout,
-                          color: Colors.white,
+                          color:isSelected? lightColor : darkColor,
                         ),
                       ],
                     ))

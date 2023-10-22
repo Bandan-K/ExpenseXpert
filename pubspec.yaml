@@ -50,6 +50,7 @@ dependencies:
   google_sign_in: ^6.1.5
   firebase_ui_oauth_google: ^1.2.12
   cloud_firestore: ^4.11.0
+  fluttertoast: ^8.2.2
 
 dev_dependencies:
   flutter_test:
