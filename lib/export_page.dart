@@ -14,7 +14,7 @@ class _ExportPageState extends State<ExportPage> {
         appBar: AppBar(
           backgroundColor: Colors.black,
           leading: IconButton(
-            icon: Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back),
             onPressed: () {
               // Add your back button functionality here
               Navigator.pop(context); // For example, pop the current route
@@ -22,25 +22,22 @@ class _ExportPageState extends State<ExportPage> {
           ),
         ),
         backgroundColor: Colors.black,
-        body: Container(
-          child:
-          Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: Text(
-                "Export Data",
-                style: TextStyle(fontSize: 35, color: Colors.white),
-              ),
+        body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          const Padding(
+            padding: EdgeInsets.all(16),
+            child: Text(
+              "Export Data",
+              style: TextStyle(fontSize: 35, color: Colors.white),
             ),
-            build_pdf(),
-            build_cal(),
-            build_save()
-          ]),
-        ),
+          ),
+          buildPdf(),
+          build_cal(),
+          buildSave()
+        ]),
       );
   }
 
-  Widget build_pdf() {
+  Widget buildPdf() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -50,18 +47,18 @@ class _ExportPageState extends State<ExportPage> {
           },
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.black,
-            fixedSize: Size(187.0, 50.0),
-            side: BorderSide(
+            fixedSize: const Size(187.0, 50.0),
+            side: const BorderSide(
                 color: Colors.white,
                 width: 2), // Set the width and height you desire
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20), // Adjust as needed
                 bottomLeft: Radius.circular(20), // Adjust as needed
               ),
             ),
           ),
-          child: Text('CSV'),
+          child: const Text('CSV'),
         ),
         ElevatedButton(
           onPressed: () {
@@ -69,9 +66,9 @@ class _ExportPageState extends State<ExportPage> {
           },
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.grey,
-            fixedSize: Size(187.0, 50.0),
-            side: BorderSide(color: Colors.white, width: 2),
-            shape: RoundedRectangleBorder(
+            fixedSize: const Size(187.0, 50.0),
+            side: const BorderSide(color: Colors.white, width: 2),
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
                 topRight: Radius.circular(20), // Adjust as needed
                 bottomRight: Radius.circular(20),
@@ -79,7 +76,7 @@ class _ExportPageState extends State<ExportPage> {
               ),
             ),
           ),
-          child: Text('PDF'),
+          child: const Text('PDF'),
         ),
       ],
     );
@@ -94,14 +91,14 @@ class _ExportPageState extends State<ExportPage> {
 
           decoration: InputDecoration(
               border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white54, width: 25),
+                  borderSide: const BorderSide(color: Colors.white54, width: 25),
                   borderRadius: BorderRadius.circular(400)),
-              enabledBorder: OutlineInputBorder(
+              enabledBorder: const OutlineInputBorder(
                 borderSide: BorderSide(color: Colors.white, width: 2.5),
               ),
               labelText: "Date",
-              suffixIcon: Icon(Icons.calendar_month),
-              labelStyle: TextStyle(color: Colors.white, fontSize: 16)),
+              suffixIcon: const Icon(Icons.calendar_month),
+              labelStyle: const TextStyle(color: Colors.white, fontSize: 16)),
         ),
       ),
       // SizedBox(
@@ -111,11 +108,11 @@ class _ExportPageState extends State<ExportPage> {
     );
   }
 
-  Widget build_save() {
+  Widget buildSave() {
     return Center(
       child: Padding(
         padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
-        child: Container(
+        child: SizedBox(
           width: 125,
           height: 40,
           child: ElevatedButton(
@@ -126,7 +123,7 @@ class _ExportPageState extends State<ExportPage> {
                     .purple.shade700, // Set your desired background color here
               ),
             ),
-            child: Text(
+            child: const Text(
               "Export",
               style: TextStyle(fontSize: 20),
             ),

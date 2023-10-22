@@ -15,7 +15,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.black,
-            title: Text("Home", style: TextStyle(color: Colors.white),),
+            title: const Text("Home", style: TextStyle(color: Colors.white),),
             // actions: <Widget>[
             //   IconButton(
             //     padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
             child : SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [build_amount(), build_analysis(), build_day()],
+              children: [buildAmount(), buildAnalysis(), buildDay()],
             ),
           ),
           onRefresh: () async{}
@@ -42,15 +42,15 @@ class _HomePageState extends State<HomePage> {
     );
   }
   // The list of bills
-  Widget build_day() {
+  Widget buildDay() {
     return Column(
       children: [
         Row(
           children: [
             IconButton(
                 onPressed: () {},
-                icon: Icon(Icons.calendar_month, color: Colors.white)),
-            Text(
+                icon: const Icon(Icons.calendar_month, color: Colors.white)),
+            const Text(
               "Today",
               style: TextStyle(
                   color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
@@ -65,10 +65,10 @@ class _HomePageState extends State<HomePage> {
                 Image.asset("assets/images/icons8-bill-64.png",height: 80,width: 50,),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               width: 30,
             ),
-            Column(
+            const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
@@ -83,7 +83,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
-            Column(
+            const Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
@@ -108,10 +108,10 @@ class _HomePageState extends State<HomePage> {
                 Image.asset("assets/images/food.png",height: 80,width: 50,),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               width: 30,
             ),
-            Column(
+            const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
@@ -126,7 +126,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
-            Column(
+            const Column(
               children: [
                 Text(
                   "-₹10",
@@ -150,10 +150,10 @@ class _HomePageState extends State<HomePage> {
                 Image.asset("assets/images/fashion.png",height: 80,width: 50,),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               width: 30,
             ),
-            Column(
+            const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
@@ -168,7 +168,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
-            Column(
+            const Column(
               children: [
                 Text(
                   "-₹49.99",
@@ -192,10 +192,10 @@ class _HomePageState extends State<HomePage> {
                 Image.asset("assets/images/cart.png",height: 80,width: 50,),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               width: 30,
             ),
-            Column(
+            const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
@@ -210,10 +210,10 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               width: 50,
             ),
-            Column(
+            const Column(
               children: [
                 Text(
                   "-₹80",
@@ -240,25 +240,25 @@ class _HomePageState extends State<HomePage> {
   }
 
   // The Total Amount
-  Widget build_amount() {
+  Widget buildAmount() {
     return Column(
       children: [
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Align(
           alignment: Alignment.center,
           child: Text("${getCurrentMonth().toString()}'s expenses",
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.normal,
                 color: Colors.white),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 15,
         ),
-        Align(
+        const Align(
           alignment: Alignment.center,
           child: Text(
             '₹1200.12',
@@ -270,7 +270,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
   // Teh Graph part
-  Widget build_analysis() {
+  Widget buildAnalysis() {
     return Align(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -295,195 +295,193 @@ class _HomePageState extends State<HomePage> {
             children: [
               Padding(
                 padding: const EdgeInsets.fromLTRB(0, 12, 0,0),
-                child: Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            SimpleAnimationProgressBar(
-                              height: 200,
-                              width: 10,
-                              backgroundColor: Colors.grey.shade800,
-                              foregrondColor: Colors.purple,
-                              ratio: 0.7,
-                              direction: Axis.vertical,
-                              curve: Curves.fastLinearToSlowEaseIn,
-                              duration: const Duration(seconds: 3),
-                              borderRadius: BorderRadius.circular(10),
-                              gradientColor: const LinearGradient(
-                                  colors: [Colors.pink, Colors.purple]),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.indigo,
-                                  offset: const Offset(
-                                    5.0,
-                                    5.0,
-                                  ),
-                                  blurRadius: 10.0,
-                                  spreadRadius: 2.0,
-                                ),
-                              ],
-                            ),
-                            SimpleAnimationProgressBar(
-                              height: 200,
-                              width: 10,
-                              backgroundColor: Colors.grey.shade800,
-                              foregrondColor: Colors.purple,
-                              ratio: 0.3,
-                              direction: Axis.vertical,
-                              curve: Curves.fastLinearToSlowEaseIn,
-                              duration: const Duration(seconds: 3),
-                              borderRadius: BorderRadius.circular(10),
-                              gradientColor: const LinearGradient(
-                                  colors: [Colors.pink, Colors.purple]),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.indigo,
-                                  offset: const Offset(
-                                    5.0,
-                                    5.0,
-                                  ),
-                                  blurRadius: 10.0,
-                                  spreadRadius: 2.0,
-                                ),
-                              ],
-                            ),SimpleAnimationProgressBar(
-                              height: 200,
-                              width: 10,
-                              backgroundColor: Colors.grey.shade800,
-                              foregrondColor: Colors.purple,
-                              ratio: 0.6,
-                              direction: Axis.vertical,
-                              curve: Curves.fastLinearToSlowEaseIn,
-                              duration: const Duration(seconds: 3),
-                              borderRadius: BorderRadius.circular(10),
-                              gradientColor: const LinearGradient(
-                                  colors: [Colors.pink, Colors.purple]),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.indigo,
-                                  offset: const Offset(
-                                    5.0,
-                                    5.0,
-                                  ),
-                                  blurRadius: 10.0,
-                                  spreadRadius: 2.0,
-                                ),
-                              ],
-                            ),SimpleAnimationProgressBar(
-                              height: 200,
-                              width: 10,
-                              backgroundColor: Colors.grey.shade800,
-                              foregrondColor: Colors.purple,
-                              ratio: 0.2,
-                              direction: Axis.vertical,
-                              curve: Curves.fastLinearToSlowEaseIn,
-                              duration: const Duration(seconds: 3),
-                              borderRadius: BorderRadius.circular(10),
-                              gradientColor: const LinearGradient(
-                                  colors: [Colors.pink, Colors.purple]),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.indigo,
-                                  offset: const Offset(
-                                    5.0,
-                                    5.0,
-                                  ),
-                                  blurRadius: 10.0,
-                                  spreadRadius: 2.0,
-                                ),
-                              ],
-                            ),SimpleAnimationProgressBar(
-                              height: 200,
-                              width: 10,
-                              backgroundColor: Colors.grey.shade800,
-                              foregrondColor: Colors.purple,
-                              ratio: 0.7,
-                              direction: Axis.vertical,
-                              curve: Curves.fastLinearToSlowEaseIn,
-                              duration: const Duration(seconds: 3),
-                              borderRadius: BorderRadius.circular(10),
-                              gradientColor: const LinearGradient(
-                                  colors: [Colors.pink, Colors.purple]),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.indigo,
-                                  offset: const Offset(
-                                    5.0,
-                                    5.0,
-                                  ),
-                                  blurRadius: 10.0,
-                                  spreadRadius: 2.0,
-                                ),
-                              ],
-                            ),SimpleAnimationProgressBar(
-                              height: 200,
-                              width: 10,
-                              backgroundColor: Colors.grey.shade800,
-                              foregrondColor: Colors.purple,
-                              ratio: 0.9,
-                              direction: Axis.vertical,
-                              curve: Curves.fastLinearToSlowEaseIn,
-                              duration: const Duration(seconds: 3),
-                              borderRadius: BorderRadius.circular(10),
-                              gradientColor: const LinearGradient(
-                                  colors: [Colors.pink, Colors.purple]),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.indigo,
-                                  offset: const Offset(
-                                    5.0,
-                                    5.0,
-                                  ),
-                                  blurRadius: 10.0,
-                                  spreadRadius: 2.0,
-                                ),
-                              ],
-                            ),SimpleAnimationProgressBar(
-                              height: 200,
-                              width: 10,
-                              backgroundColor: Colors.grey.shade800,
-                              foregrondColor: Colors.purple,
-                              ratio: 0.4,
-                              direction: Axis.vertical,
-                              curve: Curves.fastLinearToSlowEaseIn,
-                              duration: const Duration(seconds: 3),
-                              borderRadius: BorderRadius.circular(10),
-                              gradientColor: const LinearGradient(
-                                  colors: [Colors.pink, Colors.purple]),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.indigo,
-                                  offset: const Offset(
-                                    5.0,
-                                    5.0,
-                                  ),
-                                  blurRadius: 10.0,
-                                  spreadRadius: 2.0,
-                                ),
-                              ],
+                        SimpleAnimationProgressBar(
+                          height: 200,
+                          width: 10,
+                          backgroundColor: Colors.grey.shade800,
+                          foregrondColor: Colors.purple,
+                          ratio: 0.7,
+                          direction: Axis.vertical,
+                          curve: Curves.fastLinearToSlowEaseIn,
+                          duration: const Duration(seconds: 3),
+                          borderRadius: BorderRadius.circular(10),
+                          gradientColor: const LinearGradient(
+                              colors: [Colors.pink, Colors.purple]),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Colors.indigo,
+                              offset: Offset(
+                                5.0,
+                                5.0,
+                              ),
+                              blurRadius: 10.0,
+                              spreadRadius: 2.0,
                             ),
                           ],
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Text("Mon",style: TextStyle(color: Colors.white),),
-                              Text("Tue",style: TextStyle(color: Colors.white),),
-                              Text("Wed",style: TextStyle(color: Colors.white),),
-                              Text("Thu",style: TextStyle(color: Colors.white),),
-                              Text("Fri",style: TextStyle(color: Colors.white),),
-                              Text("Sat",style: TextStyle(color: Colors.white),),
-                              Text("Sun",style: TextStyle(color: Colors.white),),
-                            ],
-                          ),
-                        )
+                        SimpleAnimationProgressBar(
+                          height: 200,
+                          width: 10,
+                          backgroundColor: Colors.grey.shade800,
+                          foregrondColor: Colors.purple,
+                          ratio: 0.3,
+                          direction: Axis.vertical,
+                          curve: Curves.fastLinearToSlowEaseIn,
+                          duration: const Duration(seconds: 3),
+                          borderRadius: BorderRadius.circular(10),
+                          gradientColor: const LinearGradient(
+                              colors: [Colors.pink, Colors.purple]),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Colors.indigo,
+                              offset: Offset(
+                                5.0,
+                                5.0,
+                              ),
+                              blurRadius: 10.0,
+                              spreadRadius: 2.0,
+                            ),
+                          ],
+                        ),SimpleAnimationProgressBar(
+                          height: 200,
+                          width: 10,
+                          backgroundColor: Colors.grey.shade800,
+                          foregrondColor: Colors.purple,
+                          ratio: 0.6,
+                          direction: Axis.vertical,
+                          curve: Curves.fastLinearToSlowEaseIn,
+                          duration: const Duration(seconds: 3),
+                          borderRadius: BorderRadius.circular(10),
+                          gradientColor: const LinearGradient(
+                              colors: [Colors.pink, Colors.purple]),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Colors.indigo,
+                              offset: Offset(
+                                5.0,
+                                5.0,
+                              ),
+                              blurRadius: 10.0,
+                              spreadRadius: 2.0,
+                            ),
+                          ],
+                        ),SimpleAnimationProgressBar(
+                          height: 200,
+                          width: 10,
+                          backgroundColor: Colors.grey.shade800,
+                          foregrondColor: Colors.purple,
+                          ratio: 0.2,
+                          direction: Axis.vertical,
+                          curve: Curves.fastLinearToSlowEaseIn,
+                          duration: const Duration(seconds: 3),
+                          borderRadius: BorderRadius.circular(10),
+                          gradientColor: const LinearGradient(
+                              colors: [Colors.pink, Colors.purple]),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Colors.indigo,
+                              offset: Offset(
+                                5.0,
+                                5.0,
+                              ),
+                              blurRadius: 10.0,
+                              spreadRadius: 2.0,
+                            ),
+                          ],
+                        ),SimpleAnimationProgressBar(
+                          height: 200,
+                          width: 10,
+                          backgroundColor: Colors.grey.shade800,
+                          foregrondColor: Colors.purple,
+                          ratio: 0.7,
+                          direction: Axis.vertical,
+                          curve: Curves.fastLinearToSlowEaseIn,
+                          duration: const Duration(seconds: 3),
+                          borderRadius: BorderRadius.circular(10),
+                          gradientColor: const LinearGradient(
+                              colors: [Colors.pink, Colors.purple]),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Colors.indigo,
+                              offset: Offset(
+                                5.0,
+                                5.0,
+                              ),
+                              blurRadius: 10.0,
+                              spreadRadius: 2.0,
+                            ),
+                          ],
+                        ),SimpleAnimationProgressBar(
+                          height: 200,
+                          width: 10,
+                          backgroundColor: Colors.grey.shade800,
+                          foregrondColor: Colors.purple,
+                          ratio: 0.9,
+                          direction: Axis.vertical,
+                          curve: Curves.fastLinearToSlowEaseIn,
+                          duration: const Duration(seconds: 3),
+                          borderRadius: BorderRadius.circular(10),
+                          gradientColor: const LinearGradient(
+                              colors: [Colors.pink, Colors.purple]),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Colors.indigo,
+                              offset: Offset(
+                                5.0,
+                                5.0,
+                              ),
+                              blurRadius: 10.0,
+                              spreadRadius: 2.0,
+                            ),
+                          ],
+                        ),SimpleAnimationProgressBar(
+                          height: 200,
+                          width: 10,
+                          backgroundColor: Colors.grey.shade800,
+                          foregrondColor: Colors.purple,
+                          ratio: 0.4,
+                          direction: Axis.vertical,
+                          curve: Curves.fastLinearToSlowEaseIn,
+                          duration: const Duration(seconds: 3),
+                          borderRadius: BorderRadius.circular(10),
+                          gradientColor: const LinearGradient(
+                              colors: [Colors.pink, Colors.purple]),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Colors.indigo,
+                              offset: Offset(
+                                5.0,
+                                5.0,
+                              ),
+                              blurRadius: 10.0,
+                              spreadRadius: 2.0,
+                            ),
+                          ],
+                        ),
                       ],
                     ),
+                    const Padding(
+                      padding: EdgeInsets.all(4.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text("Mon",style: TextStyle(color: Colors.white),),
+                          Text("Tue",style: TextStyle(color: Colors.white),),
+                          Text("Wed",style: TextStyle(color: Colors.white),),
+                          Text("Thu",style: TextStyle(color: Colors.white),),
+                          Text("Fri",style: TextStyle(color: Colors.white),),
+                          Text("Sat",style: TextStyle(color: Colors.white),),
+                          Text("Sun",style: TextStyle(color: Colors.white),),
+                        ],
+                      ),
+                    )
+                  ],
                 )
               )
             ],

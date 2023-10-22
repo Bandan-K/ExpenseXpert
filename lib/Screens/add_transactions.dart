@@ -74,7 +74,7 @@ class _AddTransactionState extends State<AddTransaction> {
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
-                      Container(
+                      SizedBox(
                         width: 175,
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
@@ -102,7 +102,7 @@ class _AddTransactionState extends State<AddTransaction> {
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
-                      Container(
+                      SizedBox(
                         width: 175,
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),

@@ -9,10 +9,10 @@ List<PieChartSectionData> generatePopulationData() {
       value: 40, // Replace with the population of the first country
       title: '40%', // Replace with the name of the first country
       radius: 40,
-      titleStyle: TextStyle(
+      titleStyle: const TextStyle(
         fontSize: 18,
         fontWeight: FontWeight.bold,
-        color: const Color(0xFF000000),
+        color: Color(0xFF000000),
       ),
     ),
     PieChartSectionData(
@@ -20,10 +20,10 @@ List<PieChartSectionData> generatePopulationData() {
       value: 20, // Replace with the population of the first country
       title: '20%', // Replace with the name of the first country
       radius: 40,
-      titleStyle: TextStyle(
+      titleStyle: const TextStyle(
         fontSize: 18,
         fontWeight: FontWeight.bold,
-        color: const Color(0xFF000000),
+        color: Color(0xFF000000),
       ),
     ),
     PieChartSectionData(
@@ -31,10 +31,10 @@ List<PieChartSectionData> generatePopulationData() {
       value: 30, // Replace with the population of the second country
       title: '30%', // Replace with the name of the second country
       radius: 40,
-      titleStyle: TextStyle(
+      titleStyle: const TextStyle(
         fontSize: 18,
         fontWeight: FontWeight.bold,
-        color: const Color(0xFF000000),
+        color: Color(0xFF000000),
       ),
     ),
     PieChartSectionData(
@@ -42,10 +42,10 @@ List<PieChartSectionData> generatePopulationData() {
       value: 10, // Replace with the population of the third country
       title: '10%', // Replace with the name of the third country
       radius: 40,
-      titleStyle: TextStyle(
+      titleStyle: const TextStyle(
         fontSize: 18,
         fontWeight: FontWeight.bold,
-        color: const Color(0xFF000000),
+        color: Color(0xFF000000),
       ),
     ),
   ];
@@ -71,7 +71,7 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
 
          children: [
 
-           // Piechart
+           // Pie chart
            Container(
              alignment: Alignment.topCenter,
              child: AspectRatio(
@@ -96,7 +96,7 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
                Column(
                  crossAxisAlignment: CrossAxisAlignment.start,
                  children: [
-                   Text("Bills",style: TextStyle(fontSize: 16,fontWeight:FontWeight.bold,color: Colors.white),),
+                   const Text("Bills",style: TextStyle(fontSize: 16,fontWeight:FontWeight.bold,color: Colors.white),),
                    //bar here
                    SimpleAnimationProgressBar(
                        height: 10,
@@ -110,10 +110,10 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
                        borderRadius: BorderRadius.circular(10),
                        gradientColor: const LinearGradient(
                        colors: [Colors.pink, Colors.purple]),
-                       boxShadow: [
+                       boxShadow: const [
                          BoxShadow(
                            color: Colors.indigo,
-                           offset: const Offset(
+                           offset: Offset(
                              5.0,
                              5.0,
                            ),
@@ -131,13 +131,11 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
 //CLOTHES
            Row(
              children: [
-               Container(
-                 child: Image.asset("assets/images/icons8-bill-64.png"),
-               ),
+               Image.asset("assets/images/icons8-bill-64.png"),
                Column(
                  crossAxisAlignment: CrossAxisAlignment.start,
                  children: [
-                   Text("Clothes",style: TextStyle(fontSize: 16,fontWeight:FontWeight.bold,color: Colors.white),),
+                   const Text("Clothes",style: TextStyle(fontSize: 16,fontWeight:FontWeight.bold,color: Colors.white),),
                    //bar here
                    SimpleAnimationProgressBar(
                        height: 10,
@@ -151,10 +149,10 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
                        borderRadius: BorderRadius.circular(10),
                        gradientColor: const LinearGradient(
                        colors: [Colors.pink, Colors.purple]),
-                       boxShadow: [
+                       boxShadow: const [
                          BoxShadow(
                            color: Colors.indigo,
-                           offset: const Offset(
+                           offset: Offset(
                              5.0,
                              5.0,
                            ),
@@ -173,13 +171,11 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
 //FOOD
            Row(
              children: [
-               Container(
-                 child: Image.asset("assets/images/icons8-bill-64.png"),
-               ),
+               Image.asset("assets/images/icons8-bill-64.png"),
                Column(
                  crossAxisAlignment: CrossAxisAlignment.start,
                  children: [
-                   Text("Food",style: TextStyle(fontSize: 16,fontWeight:FontWeight.bold,color: Colors.white),),
+                   const Text("Food",style: TextStyle(fontSize: 16,fontWeight:FontWeight.bold,color: Colors.white),),
                    //bar here
                    SimpleAnimationProgressBar(
                        height: 10,
@@ -193,10 +189,10 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
                        borderRadius: BorderRadius.circular(10),
                        gradientColor: const LinearGradient(
                        colors: [Colors.pink, Colors.purple]),
-                       boxShadow: [
+                       boxShadow: const [
                          BoxShadow(
                            color: Colors.indigo,
-                           offset: const Offset(
+                           offset: Offset(
                              5.0,
                              5.0,
                            ),
@@ -214,13 +210,11 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
 //OTHERS
            Row(
              children: [
-               Container(
-                 child: Image.asset("assets/images/icons8-bill-64.png"),
-               ),
+               Image.asset("assets/images/icons8-bill-64.png"),
                Column(
                  crossAxisAlignment: CrossAxisAlignment.start,
                  children: [
-                   Text("Others",style: TextStyle(fontSize: 16,fontWeight:FontWeight.bold,color: Colors.white),),
+                   const Text("Others",style: TextStyle(fontSize: 16,fontWeight:FontWeight.bold,color: Colors.white),),
                    //bar here
                    SimpleAnimationProgressBar(
                        height: 10,
@@ -234,10 +228,10 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
                        borderRadius: BorderRadius.circular(10),
                        gradientColor: const LinearGradient(
                        colors: [Colors.pink, Colors.purple]),
-                       boxShadow: [
+                       boxShadow: const [
                          BoxShadow(
                            color: Colors.indigo,
-                           offset: const Offset(
+                           offset: Offset(
                              5.0,
                              5.0,
                            ),

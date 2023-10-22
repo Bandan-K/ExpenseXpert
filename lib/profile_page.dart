@@ -20,13 +20,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 40),
-            Text(
+            const SizedBox(height: 40),
+            const Text(
               "Profile",
               style: TextStyle(color: Colors.white, fontSize: 25),
               textAlign: TextAlign.left,
             ),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
             Align(
               alignment: Alignment.center,
               child: Container(
