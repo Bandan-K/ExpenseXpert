@@ -2,7 +2,6 @@ import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'category.dart';
 import 'export_page.dart';
 import 'transactions_page.dart';
@@ -15,6 +14,11 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   bool positive = false;
+
+  String? email = FirebaseAuth.instance.currentUser?.email;
+
+  // String? displayText = (email != null && email.isNotEmpty) ? email : "Guest";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,17 +28,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Row(
+            const Row(
               children: [
-                Container(
-                  child: Text(
-                    "Settings",
-                    style: TextStyle(color: Colors.white, fontSize: 25),
-                  ),
+                Text(
+                  "Settings",
+                  style: TextStyle(color: Colors.white, fontSize: 25),
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
             Row(
@@ -48,29 +50,29 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     fit: BoxFit.cover,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 25,
                 ),
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                const Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   Text(
-                    "Captain Roger",
+                    "",
                     style: TextStyle(color: Colors.white, fontSize: 15),
                   ),
                   Text(
-                    "rah***23@gmail.com",
+                    "Guest",
                     style: TextStyle(color: Colors.white, fontSize: 18),
                   ),
                 ]),
                 // ElevatedButton(onPressed: () {} , child: Icon(Icons.arrow_forward_ios,color: Colors.white,))
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   "Transactions",
                   style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
@@ -88,13 +90,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 }, child: Icon(Icons.arrow_forward_ios))
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   "Theme",
                   style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
@@ -107,7 +109,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     borderColor: Colors.transparent,
                     backgroundColor: Colors.black,
                     borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                    boxShadow: const [
+                    boxShadow: [
                       BoxShadow(
                         color: Colors.deepPurple,
                         spreadRadius: 1,
@@ -122,26 +124,25 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   const CupertinoActivityIndicator(color: Colors.white),
                   onChanged: (b) {
                     setState(() => positive = b);
-                    return Future<dynamic>.delayed(Duration(seconds: 1));
+                    return Future<dynamic>.delayed(const Duration(seconds: 0));
                   },
                   styleBuilder: (b) => ToggleStyle(
                       indicatorColor: b ? Colors.deepPurple.shade900 : Colors.deepPurple.shade900),
-
                   textBuilder: (value) => value
                       ? Center(
-                      child: Image.asset("assets/images/icons8-moon-64.png")
+                      child: Image.asset("assets/images/icons8-accuweather-64.png")
                   )
-                      : Center(child: Image.asset("assets/images/icons8-accuweather-64.png")),
+                      : Center(child: Image.asset("assets/images/icons8-moon-64.png")),
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   "Export",
                   style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
