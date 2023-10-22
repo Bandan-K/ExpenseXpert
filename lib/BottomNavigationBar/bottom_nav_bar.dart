@@ -3,7 +3,7 @@ import 'package:expensexpert/Screens/add_transactions.dart';
 import 'package:flutter/material.dart';
 import '../analytics.dart';
 import '../homepage.dart';
-import '../profile_page.dart';
+import '../Screens/profile_page.dart';
 import '../settings.dart';
 
 class BottomNavBar extends StatefulWidget {

@@ -24,7 +24,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('User Profile'),
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.black,
+        title: const Text('User Profile', style: TextStyle(color: Colors.white),),
       ),
       backgroundColor: Colors.black,
       body: Padding(
@@ -34,53 +36,53 @@ class _ProfileScreenState extends State<ProfileScreen> {
             children: [
               TextFormField(
                 controller: nameController,
-                style: TextStyle(color: Colors.white),
+                style: const TextStyle(color: Colors.white),
                 decoration: InputDecoration(
                   labelText: 'Name',
-                  labelStyle: TextStyle(color: Colors.white),
-                  enabledBorder: OutlineInputBorder(
+                  labelStyle: const TextStyle(color: Colors.white),
+                  enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white),
                   ),
-                  focusedBorder: OutlineInputBorder(
+                  focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.purple),
                   ),
                   enabled: isEditing,
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               TextFormField(
                 controller: emailController,
-                style: TextStyle(color: Colors.white),
+                style: const TextStyle(color: Colors.white),
                 decoration: InputDecoration(
                   labelText: 'Email',
-                  labelStyle: TextStyle(color: Colors.white),
-                  enabledBorder: OutlineInputBorder(
+                  labelStyle: const TextStyle(color: Colors.white),
+                  enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white),
                   ),
-                  focusedBorder: OutlineInputBorder(
+                  focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.purple),
                   ),
                   enabled: isEditing,
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               TextFormField(
                 controller: phoneController,
-                style: TextStyle(color: Colors.white),
+                style: const TextStyle(color: Colors.white),
                 decoration: InputDecoration(
                   labelText: 'Phone Number',
-                  labelStyle: TextStyle(color: Colors.white),
-                  enabledBorder: OutlineInputBorder(
+                  labelStyle: const TextStyle(color: Colors.white),
+                  enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white),
                   ),
-                  focusedBorder: OutlineInputBorder(
+                  focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.purple),
                   ),
                   enabled: isEditing,
                 ),
               ),
-              SizedBox(height: 16),
-              Text(
+              const SizedBox(height: 16),
+              const Text(
                 'Gender',
                 style: TextStyle(color: Colors.white, fontSize: 18),
               ),
@@ -95,7 +97,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       });
                     },
                   ),
-                  Text('Male', style: TextStyle(color: Colors.white)),
+                  const Text('Male', style: TextStyle(color: Colors.white)),
                   Radio(
                     value: 'Female',
                     groupValue: selectedGender,
@@ -105,17 +107,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       });
                     },
                   ),
-                  Text('Female', style: TextStyle(color: Colors.white)),
+                  const Text('Female', style: TextStyle(color: Colors.white)),
                 ],
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Row(
                 children: [
-                  Text(
+                  const Text(
                     'Date of Birth',
                     style: TextStyle(color: Colors.white, fontSize: 18),
                   ),
-                  SizedBox(width: 16),
+                  const SizedBox(width: 16),
                   ElevatedButton(
                     onPressed: () async {
                       final selectedDate = await showDatePicker(
@@ -134,7 +136,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.purple),
                     ),
-                    child: Text(
+                    child: const Text(
                       'Select Date',
                       style: TextStyle(color: Colors.white),
                     ),
@@ -144,9 +146,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
               if (selectedDate != null)
                 Text(
                   'Date of Birth: ${selectedDate?.toLocal().toString().split(' ')[0]}',
-                  style: TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.white),
                 ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               if (isEditing)
                 ElevatedButton(
                   onPressed: () {
@@ -164,7 +166,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.purple),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Save',
                     style: TextStyle(color: Colors.white),
                   ),
@@ -174,12 +176,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   onPressed: () {
                     setState(() {
                       isEditing = true;
+
                     });
                   },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.purple),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Edit',
                     style: TextStyle(color: Colors.white),
                   ),

@@ -15,6 +15,7 @@ Hello Users,
     flutter pub add google_sign_in
     flutter pub add firebase_ui_oauth_google
     flutter pub add --dev icons_launcher
+    flutter pub add cloud_firestore
 
 ## Steps for FireBase connectivity :
     Node.js Packages : npm install -g firebase-tools
