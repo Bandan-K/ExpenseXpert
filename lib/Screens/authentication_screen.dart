@@ -22,9 +22,14 @@ class AuthenticationScreen extends StatelessWidget {
   Widget customizedSignInScreen() {
     return SignInScreen(
       headerBuilder: (context, constraints, shrinkOffset) {
-        return Padding(
-          padding: const EdgeInsets.all(16),
-          child: Image.asset('assets/images/rr.png'),
+        return Scaffold(
+          backgroundColor: Colors.black,
+          body: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Image.asset('assets/images/applogo.jpg'),
+            ),
+          ),
         );
       },
       subtitleBuilder: (context, action) {

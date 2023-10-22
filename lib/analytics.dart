@@ -64,6 +64,7 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.black,
         title: const Text("Analytics", style: TextStyle(color: Colors.white),),
       ),
