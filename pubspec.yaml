@@ -105,3 +105,11 @@ flutter_icons:
   image_path: "assets/images/applogo.jpg"
   android: true
   ios: true
+
+icons_launcher:
+  image_path: 'assets/logo/food.png'
+  platforms:
+    android:
+      enable: true
+    ios:
+      enable: true
