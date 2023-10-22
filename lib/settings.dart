@@ -154,10 +154,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Export",
-                  style: TextStyle(color: isSelected? lightColor : darkColor, fontSize: 20),
-                ),
                 ElevatedButton(style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(isSelected? darkColor : lightColor),
                     foregroundColor: MaterialStateProperty.all(isSelected? lightColor : darkColor),
