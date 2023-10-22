@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:expensexpert/BottomNavigationBar/bottom_nav_bar.dart';
 import 'package:expensexpert/forgot_pass.dart';
 import 'package:expensexpert/sign_up.dart';
