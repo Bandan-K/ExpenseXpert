@@ -169,8 +169,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         context,
                         MaterialPageRoute(builder: (context) => ExportPage()), // Navigate to SecondPage
                       );
-                    }, child: Icon(Icons.arrow_forward_ios))
-              ],
+                    }, child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Export",
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                      Icon(Icons.arrow_forward_ios),
+                    ],
+                  ),
             ),
             const SizedBox(
               height: 50,
@@ -231,7 +239,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
             )
           ],
         ),
+        ]
       ),
+      )
     );
   }
 }
