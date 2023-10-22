@@ -196,6 +196,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       const AuthenticationScreen();
                     }, child:
                     const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Text(
                           "Logout  ",
