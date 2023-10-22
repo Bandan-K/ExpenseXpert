@@ -1,4 +1,5 @@
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
+import 'package:expensexpert/Screens/authentication_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -192,8 +193,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     )),
                     onPressed: () async {
                       await FirebaseAuth.instance.signOut();
+                      const AuthenticationScreen();
                     }, child:
-                    Column(
+                    const Row(
                       children: [
                         Text(
                           "Logout  ",
