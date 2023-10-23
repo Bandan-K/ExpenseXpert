@@ -1,3 +1,4 @@
+import 'package:expensexpert/Operations/update_users.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -162,7 +163,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       }
                       setState(() {
                         isEditing = false;
-                      });
+                        UpdateUsers.addUser(
+                          'John Doe',
+                          'johndoe@example.com',
+                          '1234567890',
+                          'Male',
+                          DateTime.now(),
+                        );
+                      })
                     },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.purple),
@@ -177,7 +185,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     onPressed: () {
                       setState(() {
                         isEditing = true;
-
                       });
                     },
                     style: ButtonStyle(

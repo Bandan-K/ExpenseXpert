@@ -6,10 +6,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'Operations/get_users.dart';
-import 'category.dart';
-import 'export_page.dart';
-import 'transactions_page.dart';
+import '../Operations/get_users.dart';
+import '../category.dart';
+import '../export_page.dart';
+import '../transactions_page.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../analytics.dart';
 import '../homepage.dart';
 import '../Screens/profile_page.dart';
-import '../settings.dart';
+import '../Screens/settings.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});
