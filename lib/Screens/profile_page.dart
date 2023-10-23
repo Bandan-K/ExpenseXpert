@@ -170,7 +170,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           'Male',
                           DateTime.now(),
                         );
-                      })
+                      });
                     },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.purple),
