@@ -30,25 +30,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   void initState() {
     super.initState();
-    loadTheme();
   }
-
-
-  // Function to load the theme setting from shared preferences
-  Future<void> loadTheme() async {
-    final prefs = await SharedPreferences.getInstance();
-    setState(() {
-      isSelected = prefs.getBool('theme') ?? true;
-    });
-  }
-
-
-  // Function to save the theme setting to shared preferences
-  Future<void> saveTheme(bool isDark) async {
-    final prefs = await SharedPreferences.getInstance();
-    prefs.setBool('theme', isDark);
-  }
-
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +41,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         title: Text("Settings", style: TextStyle(color: isSelected? lightColor : darkColor),),
       ),
       backgroundColor: isSelected? darkColor : lightColor,
-      body:Obx(()=>SingleChildScrollView(
+      body:SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(30.0),
           child: Column(
@@ -150,7 +132,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     loadingIconBuilder: (context, global) =>
                     const CupertinoActivityIndicator(color: Colors.white),
                     onChanged: (b) {
-                      saveTheme(b); // Save the theme selection to shared preferences
                       setState(() {
                         isSelected = b;
                         positive = b;
@@ -249,7 +230,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           ),
                         ],
                       ))
-
                 ],
               )
             ],
@@ -258,6 +238,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
         ),
         ),
       )
-    ));
+    );
   }
 }
