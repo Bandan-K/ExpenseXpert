@@ -17,18 +17,6 @@ class _HomePageState extends State<HomePage> {
             automaticallyImplyLeading: false,
             backgroundColor: Colors.black,
             title: const Text("Home", style: TextStyle(color: Colors.white),),
-            // actions: <Widget>[
-            //   IconButton(
-            //     padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-            //     icon: const Icon(
-            //       Icons.refresh,
-            //       color: Colors.white,
-            //     ),
-            //     onPressed: () {
-            //       // do something
-            //     },
-            //   )
-            // ],
           ),
           backgroundColor: Colors.black,
           body: RefreshIndicator(
