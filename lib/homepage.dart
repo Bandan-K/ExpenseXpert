@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
           appBar: AppBar(
             automaticallyImplyLeading: false,
             backgroundColor: Colors.black,
-            title: Text("Home"),
+            title: Text("Home", style: TextStyle(color: Colors.white)),
           ),
           backgroundColor: Colors.black,
           body: RefreshIndicator(

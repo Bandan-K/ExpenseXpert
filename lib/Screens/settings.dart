@@ -19,7 +19,7 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   bool positive = false;
-    bool isSelected = false;
+    bool isSelected = true;
     var darkColor = Colors.black;
     var lightColor = Colors.white;
   String? email = FirebaseAuth.instance.currentUser?.email;

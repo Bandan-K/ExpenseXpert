@@ -13,7 +13,7 @@ class _AddTransactionState extends State<AddTransaction> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add Transaction'),
+        title: const Text('Add Transaction', style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.black,
       ),
       backgroundColor: Colors.black,
@@ -171,7 +171,7 @@ class _AddTransactionState extends State<AddTransaction> {
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all<Color>(
                           Colors.purple
-                              .shade700, // Set your desired background color here
+                              .shade50, // Set your desired background color here
                         ),
                       ),
                       child: const Text(
