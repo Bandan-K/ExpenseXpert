@@ -1,8 +1,10 @@
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
+import 'package:expensexpert/Screens/add_transactions.dart';
 import 'package:expensexpert/Screens/authentication_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Operations/get_users.dart';
 import 'category.dart';
@@ -17,7 +19,7 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   bool positive = false;
-    bool isSelected = true;
+    bool isSelected = false;
     var darkColor = Colors.black;
     var lightColor = Colors.white;
   String? email = FirebaseAuth.instance.currentUser?.email;
@@ -57,7 +59,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         title: Text("Settings", style: TextStyle(color: isSelected? lightColor : darkColor),),
       ),
       backgroundColor: isSelected? darkColor : lightColor,
-      body:SingleChildScrollView(
+      body:Obx(()=>SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(30.0),
           child: Column(
@@ -110,7 +112,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => TransactionsPage(isSelected : isSelected)), // Navigate to SecondPage
+                      MaterialPageRoute(builder: (context) => AddTransaction()), // Navigate to SecondPage
                     );
                   }, child: Icon(Icons.arrow_forward_ios))
                 ],
@@ -256,6 +258,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
         ),
         ),
       )
-    );
+    ));
   }
 }

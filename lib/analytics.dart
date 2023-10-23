@@ -5,7 +5,7 @@ import 'package:simple_animation_progress_bar/simple_animation_progress_bar.dart
 List<PieChartSectionData> generatePopulationData() {
   return [
     PieChartSectionData(
-      color: Colors.orange,
+      color: Colors.indigo.shade500,
       value: 40, // Replace with the population of the first country
       title: '40%', // Replace with the name of the first country
       radius: 40,
@@ -16,7 +16,7 @@ List<PieChartSectionData> generatePopulationData() {
       ),
     ),
     PieChartSectionData(
-      color: Colors.indigo,
+      color: Colors.indigo.shade100,
       value: 20, // Replace with the population of the first country
       title: '20%', // Replace with the name of the first country
       radius: 40,
@@ -27,7 +27,7 @@ List<PieChartSectionData> generatePopulationData() {
       ),
     ),
     PieChartSectionData(
-      color: Colors.green,
+      color: Colors.indigo.shade300,
       value: 30, // Replace with the population of the second country
       title: '30%', // Replace with the name of the second country
       radius: 40,
@@ -38,7 +38,7 @@ List<PieChartSectionData> generatePopulationData() {
       ),
     ),
     PieChartSectionData(
-      color: Colors.pink,
+      color: Colors.indigo.shade800,
       value: 10, // Replace with the population of the third country
       title: '10%', // Replace with the name of the third country
       radius: 40,

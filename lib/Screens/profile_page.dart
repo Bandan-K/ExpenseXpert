@@ -9,14 +9,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
-  String? selectedGender;
   DateTime? selectedDate;
-
   String? savedName;
+
   String? savedEmail;
   String? savedPhoneNumber;
   String? savedGender;
   DateTime? savedDateOfBirth;
+  String? selectedGender;
 
   bool isEditing = false;
 
