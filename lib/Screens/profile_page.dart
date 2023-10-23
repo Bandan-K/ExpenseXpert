@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:expensexpert/Operations/update_users.dart';
 import 'package:flutter/material.dart';
 
@@ -164,12 +166,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       setState(() {
                         isEditing = false;
                         UpdateUsers.addUser(
-                          'John Doe',
-                          'johndoe@example.com',
-                          '1234567890',
-                          'Male',
-                          DateTime.now(),
+                          savedName!,
+                          savedEmail!,
+                          savedPhoneNumber!,
+                          savedGender!,
+                          savedDateOfBirth!,
+                          // DateTime.now(),
                         );
+                        fetchDocumentData('3OogSfH8JbzRxjkFE1c0');
                       });
                     },
                     style: ButtonStyle(
@@ -185,6 +189,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     onPressed: () {
                       setState(() {
                         isEditing = true;
+                        fetchDocumentData('3OogSfH8JbzRxjkFE1c0');
                       });
                     },
                     style: ButtonStyle(
@@ -202,4 +207,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ),
     );
   }
+}
+
+void fetchDocumentData(String documentId) {
+  UpdateUsers.getDocumentData(documentId).then((data) {
+
+
+    // Handle the data here.
+    log("Name: ${data['Name']}");
+    log("Email: ${data['Email']}");
+  }).catchError((error) {
+    log("Error: $error");
+  });
 }

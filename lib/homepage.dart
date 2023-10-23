@@ -10,24 +10,26 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  double containerWidth = 150;
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    return Scaffold(
           appBar: AppBar(
+            automaticallyImplyLeading: false,
             backgroundColor: Colors.black,
             title: Text("Home"),
           ),
           backgroundColor: Colors.black,
           body: RefreshIndicator(
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [build_amount(), build_analysis(), build_day()],
-                ),
-              ),
-              onRefresh: () async {})),
+            child : SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [buildAmount(), build_analysis(), build_day()],
+            ),
+          ),
+          onRefresh: () async{}
+          ),
     );
   }
 
@@ -70,7 +72,7 @@ class _HomePageState extends State<HomePage> {
                   width: 30,
                 ),
                 Container(
-                  width: 180,
+                  width: containerWidth,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -125,7 +127,7 @@ class _HomePageState extends State<HomePage> {
                   width: 30,
                 ),
                 Container(
-                  width: 180,
+                  width: containerWidth,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -180,7 +182,7 @@ class _HomePageState extends State<HomePage> {
                   width: 30,
                 ),
                 Container(
-                  width: 180,
+                  width: containerWidth,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -196,10 +198,10 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 50,
                 ),
-                Column(
+                const Column(
                   children: [
                     Text(
                       "-₹1500",
@@ -231,12 +233,12 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 30,
                 ),
                 Container(
-                  width: 180,
-                  child: Column(
+                  width: containerWidth,
+                  child: const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -277,26 +279,32 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget build_amount() {
+  String getCurrentMonth() {
+    final now = DateTime.now();
+    final formatter = DateFormat.MMMM(); // "MMMM" represents the full month name.
+    return formatter.format(now);
+  }
+
+  // The Total Amount
+  Widget buildAmount() {
     return Column(
-      children: const [
-        SizedBox(
+      children: [
+        const SizedBox(
           height: 20,
         ),
         Align(
           alignment: Alignment.center,
-          child: Text(
-            'This month expense',
-            style: TextStyle(
+          child: Text("${getCurrentMonth().toString()}'s expenses",
+            style: const TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.normal,
                 color: Colors.white),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 15,
         ),
-        Align(
+        const Align(
           alignment: Alignment.center,
           child: Text(
             '₹1200.12',
