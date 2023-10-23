@@ -119,7 +119,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       backgroundColor: isSelected? darkColor : lightColor,
                       borderRadius: BorderRadius.all(Radius.circular(30.0)),
                       boxShadow: [
-                        BoxShadow(
+                        const BoxShadow(
                           color: Colors.deepPurple,
                           spreadRadius: 1,
                           blurRadius: 1,
